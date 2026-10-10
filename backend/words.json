@@ -1,0 +1,27 @@
+{
+  "_note": "Candidate words only. Validate each with phonemizer + espeak-ng before use. Not a result of any experiment.",
+  "words": [
+    {"word": "think", "target": "th_voiceless", "tier": 1, "candidate": true},
+    {"word": "three", "target": "th_voiceless", "tier": 1, "candidate": true},
+    {"word": "thank", "target": "th_voiceless", "tier": 1, "candidate": true},
+    {"word": "this", "target": "th_voiced", "tier": 1, "candidate": true},
+    {"word": "that", "target": "th_voiced", "tier": 1, "candidate": true},
+    {"word": "mother", "target": "th_voiced", "tier": 2, "candidate": true},
+    {"word": "weather", "target": "th_voiced", "tier": 2, "candidate": true},
+    {"word": "very", "target": "v_vs_f", "pair": "ferry", "tier": 1, "candidate": true},
+    {"word": "ferry", "target": "v_vs_f", "pair": "very", "tier": 1, "candidate": true},
+    {"word": "vine", "target": "v_vs_f", "pair": "fine", "tier": 1, "candidate": true},
+    {"word": "fine", "target": "v_vs_f", "pair": "vine", "tier": 1, "candidate": true},
+    {"word": "asked", "target": "final_cluster", "tier": 2, "candidate": true},
+    {"word": "helped", "target": "final_cluster", "tier": 2, "candidate": true},
+    {"word": "texts", "target": "final_cluster", "tier": 3, "candidate": true},
+    {"word": "world", "target": "final_cluster", "tier": 2, "candidate": true},
+    {"word": "months", "target": "final_cluster", "tier": 3, "candidate": true},
+    {"word": "bad", "target": "ae_vs_eh", "pair": "bed", "tier": 1, "candidate": true},
+    {"word": "bed", "target": "ae_vs_eh", "pair": "bad", "tier": 1, "candidate": true},
+    {"word": "man", "target": "ae_vs_eh", "pair": "men", "tier": 1, "candidate": true},
+    {"word": "men", "target": "ae_vs_eh", "pair": "man", "tier": 1, "candidate": true},
+    {"word": "sat", "target": "ae_vs_eh", "pair": "set", "tier": 1, "candidate": true},
+    {"word": "set", "target": "ae_vs_eh", "pair": "sat", "tier": 1, "candidate": true}
+  ]
+}

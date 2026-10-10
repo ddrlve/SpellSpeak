@@ -1,0 +1,7 @@
+websockets>=12
+# Needed for real Jalur B and bench_rtf.py:
+torch
+transformers
+soundfile
+# Needed for target phonemes (also: apt install espeak-ng / brew install espeak-ng):
+phonemizer
