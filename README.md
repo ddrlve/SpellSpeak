@@ -85,6 +85,81 @@ Jalur B is the sound judge.
 The sound judge reads the whole utterance once, after the endpoint, so its delay is measured as "endpoint to score".
 The captioner streams the whole time. Training and experiments run in Kaggle notebooks (`kaggle/`).
 
+### Technical view
+
+Built today: `per.py`, a mock `server.py` (every message carries `"mock": true`), and a basic Godot screen.
+The real Jalur A, VAD, and Jalur B are not wired in yet (see [Status](#status)). The sequence below is the target design.
+
+```mermaid
+sequenceDiagram
+  participant G as Godot UI
+  participant S as Backend (server.py)
+  participant A as Jalur A (streaming ASR)
+  participant V as VAD
+  participant B as Jalur B (own process)
+  G->>S: start {word}
+  S->>G: ready {word, target_ipa}
+  loop mic stream, sounddevice
+    S->>A: audio chunk
+    A-->>S: partial text
+    S-->>G: partial {text}
+    S->>V: audio chunk
+  end
+  V->>S: endpoint (silence, hesitation, timeout)
+  S->>G: endpoint
+  S->>B: whole utterance
+  B-->>S: heard phonemes
+  S->>S: per(target_ipa, heard_ipa)
+  S->>G: score {per, S, D, I, N, errors}
+```
+
+**Process model.** The backend captures the mic in Python (`sounddevice`) and feeds the same stream to Jalur A and the VAD.
+Godot never touches audio. Jalur B runs in a separate process and loads its model once, so the heavy load does not block streaming.
+
+**Jalur A, display only.** A streaming transducer emits partial text while audio arrives. The text goes to the UI and to WER
+experiments. It is never an input to the VAD or to the score. The VAD gets audio only, so a test can assert this.
+
+**Endpoint.** Silero VAD marks speech and silence. A hesitation allowance stops a short pause from ending the try,
+and a timeout stops a try that never ends. Parameters live in one config file per difficulty tier and are calibrated on our own recordings, not guessed.
+
+**Jalur B, closed-set check.** The game picks the word, so the system only has to verify known target sounds, not recognise any word.
+The model `facebook/wav2vec2-lv-60-espeak-cv-ft` outputs phonemes with CTC. Decoding is greedy: no language model and no biasing toward the target,
+so a wrong sound is not auto-corrected into the right one. It reads the whole utterance in one forward pass after the endpoint.
+
+**Target phonemes.** phonemizer with espeak-ng produces the expected phonemes in the same alphabet as the model,
+so the two sequences are comparable symbol by symbol.
+
+**Score.** `per.py` aligns both sequences with Levenshtein distance and returns substitutions S, deletions D, insertions I, and N reference phonemes.
+
+```
+PER = (S + D + I) / N
+```
+
+The error list (`sub`, `del`, `ins` with the reference and heard phoneme) drives the rune colours in the UI.
+
+**Protocol.** JSON text frames over `ws://127.0.0.1:8765`. The message definitions are in the header of `backend/server.py`:
+
+| Direction | Message | Fields |
+| --- | --- | --- |
+| client to server | `start` | `word` |
+| server to client | `ready` | `word`, `target_ipa` |
+| server to client | `partial` | `text` |
+| server to client | `endpoint` | none |
+| server to client | `score` | `per`, `S`, `D`, `I`, `N`, `target_ipa`, `heard_ipa`, `errors` |
+| server to client | `error` | `detail` |
+
+Planned extensions: `audio_level` (mic meter), `config` (tier parameters), `session_summary`. Extend the `server.py` header first, then the clients.
+
+**Why two paths.** Jalur A is streaming, so the player sees live feedback, but a word recogniser can hide a wrong sound.
+Jalur B is not streaming, but it hears sounds, not words. Reporting both keeps the real-time requirement and the scoring requirement separate.
+The delay of Jalur B is reported as "endpoint to score".
+
+**Evidence rules.**
+- Inference is 100% local: no external speech, ASR, or LLM API.
+- Laptop target is CPU only. Kaggle T4 is used for experiments, never for the real-time claim.
+- Every WER, PER, latency, or RTF number comes from a rerunnable script or notebook that writes to `results/`. Mock output is never a result.
+- Real-time factor on the laptop comes from `backend/bench_rtf.py`. Kaggle CPU numbers are not laptop numbers.
+
 ## Status
 
 | Part                                      | State                                              |
