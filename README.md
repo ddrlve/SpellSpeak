@@ -55,13 +55,31 @@ The captioner never decides the end of your try or your score. This keeps the sc
 
 ```mermaid
 flowchart LR
-  A["1. You say<br/>the word"] --> B["2. Game writes down<br/>the sounds you made"]
-  B --> C["3. Compare with<br/>the right sounds"]
-  C --> D["4. Runes light up<br/>Monster loses HP"]
-  A -.-> L["Live subtitles<br/>(just for show)"]
+  You(["You speak"]) --> Cap["Live captioner<br/>words on screen"]
+  You --> Sil["Silence detector<br/>did they finish?"]
+  Sil -- "finished" --> Judge["Sound judge<br/>sounds you made"]
+  Word(["Game's word"]) --> Exp["Expected sounds"]
+  Judge --> Cmp["Compare sounds<br/>count mistakes"]
+  Exp --> Cmp
+  Cap --> Screen["Game screen"]
+  Cmp --> Screen
 ```
 
-Solid arrows are the score. The dotted arrow is the live subtitles: they are shown on screen but never used for the score.
+How to read it, using the word _think_ and a player who says "tink":
+
+| Box | What happens | Example |
+| --- | --- | --- |
+| You speak | The microphone streams your voice the whole time. | You say "tink". |
+| Live captioner | Subtitles appear while you talk. They go to the screen only, never to the score. | Screen shows `tink`. |
+| Silence detector | Waits for you to stop talking. Short pauses are allowed, and a timeout ends a try that never stops. | You go quiet, so the try ends. |
+| Sound judge | Listens to the whole try once and writes down the sounds, with no hint about the right word. | Heard `t ɪ ŋ k`. |
+| Game's word | The game picked the word, not the AI. | `think` |
+| Expected sounds | The sounds the picked word should have. | `θ ɪ ŋ k` |
+| Compare sounds | Lines up expected against heard and counts the mistakes. | 1 wrong of 4, PER 0.25. |
+| Game screen | Runes light up per sound and the monster loses HP if the mistakes are few. | `θ→t` orange, `ɪ ŋ k` green. |
+
+Two paths run side by side. The top path (captioner) is fast and only for show. The path through the silence detector and
+the sound judge is the one that makes the score.
 
 Everything runs on one laptop CPU. The Python backend listens to the microphone and does the analysis.
 The Godot game only draws the screen and talks to the backend over a local WebSocket.
