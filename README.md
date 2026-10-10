@@ -55,15 +55,13 @@ The captioner never decides the end of your try or your score. This keeps the sc
 
 ```mermaid
 flowchart LR
-  You(["You speak"]) --> Cap["Live captioner<br/>words on screen"]
-  You --> Sil["Silence detector<br/>did they finish?"]
-  Sil -- "finished" --> Judge["Sound judge<br/>sounds you made"]
-  Word(["Game's word"]) --> Exp["Expected sounds"]
-  Judge --> Cmp["Compare sounds<br/>count mistakes"]
-  Exp --> Cmp
-  Cap --> Screen["Game screen"]
-  Cmp --> Screen
+  A["1. You say<br/>the word"] --> B["2. Game writes down<br/>the sounds you made"]
+  B --> C["3. Compare with<br/>the right sounds"]
+  C --> D["4. Runes light up<br/>Monster loses HP"]
+  A -.-> L["Live subtitles<br/>(just for show)"]
 ```
+
+Solid arrows are the score. The dotted arrow is the live subtitles: they are shown on screen but never used for the score.
 
 Everything runs on one laptop CPU. The Python backend listens to the microphone and does the analysis.
 The Godot game only draws the screen and talks to the backend over a local WebSocket.
@@ -90,28 +88,27 @@ The captioner streams the whole time. Training and experiments run in Kaggle not
 Built today: `per.py`, a mock `server.py` (every message carries `"mock": true`), and a basic Godot screen.
 The real Jalur A, VAD, and Jalur B are not wired in yet (see [Status](#status)). The sequence below is the target design.
 
+Read it top to bottom. Each arrow is one message.
+
 ```mermaid
 sequenceDiagram
-  participant G as Godot UI
-  participant S as Backend (server.py)
-  participant A as Jalur A (streaming ASR)
-  participant V as VAD
-  participant B as Jalur B (own process)
+  participant G as Godot (screen)
+  participant S as Backend (Python)
+  participant B as Jalur B (phoneme model)
   G->>S: start {word}
-  S->>G: ready {word, target_ipa}
-  loop mic stream, sounddevice
-    S->>A: audio chunk
-    A-->>S: partial text
-    S-->>G: partial {text}
-    S->>V: audio chunk
+  S->>G: ready {target_ipa}
+  loop while you speak
+    S->>G: partial {text}
   end
-  V->>S: endpoint (silence, hesitation, timeout)
+  Note over S: VAD hears silence, so the try ends
   S->>G: endpoint
-  S->>B: whole utterance
-  B-->>S: heard phonemes
-  S->>S: per(target_ipa, heard_ipa)
-  S->>G: score {per, S, D, I, N, errors}
+  S->>B: whole recording
+  B->>S: heard phonemes
+  S->>G: score {per, errors}
 ```
+
+Inside the backend, the microphone stream goes to Jalur A (makes `partial`) and to the VAD (makes `endpoint`) in parallel.
+The VAD never reads the text from Jalur A.
 
 **Process model.** The backend captures the mic in Python (`sounddevice`) and feeds the same stream to Jalur A and the VAD.
 Godot never touches audio. Jalur B runs in a separate process and loads its model once, so the heavy load does not block streaming.
