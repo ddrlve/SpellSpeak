@@ -37,4 +37,4 @@ flowchart LR
 5. Kaggle: upload `kaggle/NB*.ipynb`, Run All, download `results/*.json` and `*.csv` into `results/` (docs/NOTEBOOKS.md).
 
 ## Docs
-See docs/PLAN.md, DATASETS.md, NOTEBOOKS.md, GAME_DESIGN.md. AI assistance is logged in AI_USAGE_LOG.md.
+How to run: docs/RUNNING.md. See also docs/PLAN.md, DATASETS.md, NOTEBOOKS.md, GAME_DESIGN.md. AI assistance is logged in AI_USAGE_LOG.md.
