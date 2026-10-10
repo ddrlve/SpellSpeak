@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 480" width="1280" height="480" role="img" aria-labelledby="title desc">
+  <title id="title">SpellSpeak</title>
+  <desc id="desc">A wizard casts the word "think" at a monster. Phoneme runes show /θ/ heard as /t/ in orange and the other sounds matched in green.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1B2147"/>
+      <stop offset="1" stop-color="#2D2660"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#F2C14E" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#F2C14E" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      .serif { font-family: Georgia, "Times New Roman", serif; }
+      .sans { font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif; }
+      .ipa { font-family: "Charis SIL", "Doulos SIL", "Segoe UI", "DejaVu Sans", "Noto Sans", Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="480" fill="url(#sky)"/>
+  <g fill="#F5E7C1">
+    <circle cx="420" cy="60" r="1.6" opacity=".7"/><circle cx="560" cy="110" r="1.2" opacity=".5"/>
+    <circle cx="760" cy="48" r="1.8" opacity=".8"/><circle cx="880" cy="120" r="1.2" opacity=".5"/>
+    <circle cx="990" cy="70" r="1.5" opacity=".7"/><circle cx="1180" cy="44" r="1.8" opacity=".6"/>
+    <circle cx="1230" cy="150" r="1.2" opacity=".5"/><circle cx="330" cy="150" r="1.3" opacity=".5"/>
+    <circle cx="660" cy="20" r="1.2" opacity=".6"/><circle cx="1110" cy="130" r="1.4" opacity=".6"/>
+  </g>
+  <ellipse cx="640" cy="540" rx="900" ry="120" fill="#151A3A"/>
+
+  <!-- title -->
+  <text x="64" y="94" class="serif" font-size="58" fill="#F5E7C1">SpellSpeak</text>
+  <text x="66" y="128" class="sans" font-size="20" fill="#B9B3E0">Say the spell right. Every sound counts.</text>
+
+  <!-- wizard -->
+  <circle cx="287" cy="226" r="70" fill="url(#glow)"/>
+  <polygon points="150,430 250,430 216,272 184,272" fill="#6A55C9"/>
+  <circle cx="200" cy="256" r="22" fill="#F1C9A5"/>
+  <polygon points="181,264 219,264 200,312" fill="#E9E4F5"/>
+  <polygon points="164,241 236,241 207,150" fill="#4B3AA8"/>
+  <ellipse cx="200" cy="241" rx="50" ry="9" fill="#3D2F8E"/>
+  <circle cx="205" cy="195" r="4" fill="#F2C14E"/>
+  <line x1="256" y1="432" x2="285" y2="238" stroke="#8A6A3B" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="287" cy="226" r="13" fill="#F2C14E"/>
+  <g fill="none" stroke="#F2C14E" stroke-width="4" stroke-linecap="round">
+    <path d="M318 204 Q333 226 318 248" opacity=".9"/>
+    <path d="M342 190 Q364 226 342 262" opacity=".6"/>
+    <path d="M366 176 Q395 226 366 276" opacity=".35"/>
+  </g>
+
+  <!-- spell: live transcript (Jalur A), target word, phoneme runes (Jalur B) -->
+  <text x="640" y="156" class="sans" font-size="18" font-style="italic" fill="#8F89C2" text-anchor="middle">live: “tink”</text>
+  <text x="640" y="236" class="serif" font-size="86" fill="#F5E7C1" text-anchor="middle">think</text>
+  <text x="640" y="276" class="ipa" font-size="28" fill="#B9B3E0" text-anchor="middle">/θɪŋk/</text>
+
+  <g class="ipa" text-anchor="middle">
+    <rect x="469" y="304" width="72" height="72" rx="14" fill="#F29B3C" fill-opacity=".14" stroke="#F29B3C" stroke-width="3"/>
+    <text x="505" y="351" font-size="27" fill="#F7B871">θ→t</text>
+    <rect x="559" y="304" width="72" height="72" rx="14" fill="#5FD38D" fill-opacity=".12" stroke="#5FD38D" stroke-width="3"/>
+    <text x="595" y="352" font-size="34" fill="#8FE3B0">ɪ</text>
+    <rect x="649" y="304" width="72" height="72" rx="14" fill="#5FD38D" fill-opacity=".12" stroke="#5FD38D" stroke-width="3"/>
+    <text x="685" y="352" font-size="34" fill="#8FE3B0">ŋ</text>
+    <rect x="739" y="304" width="72" height="72" rx="14" fill="#5FD38D" fill-opacity=".12" stroke="#5FD38D" stroke-width="3"/>
+    <text x="775" y="352" font-size="34" fill="#8FE3B0">k</text>
+  </g>
+  <text x="469" y="410" class="ipa" font-size="18" fill="#F7B871">/θ/ terdengar /t/: ujung lidah di antara gigi, tanpa suara</text>
+
+  <!-- impact sparks -->
+  <g fill="#F2C14E">
+    <path d="M930 286 l5 13 13 5 -13 5 -5 13 -5 -13 -13 -5 13 -5z"/>
+    <path d="M905 330 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3z" opacity=".7"/>
+    <path d="M948 352 l2.5 6 6 2.5 -6 2.5 -2.5 6 -2.5 -6 -6 -2.5 6 -2.5z" opacity=".5"/>
+  </g>
+
+  <!-- monster -->
+  <rect x="980" y="176" width="170" height="14" rx="7" fill="#2A2759" stroke="#4A4590" stroke-width="2"/>
+  <rect x="982" y="178" width="104" height="10" rx="5" fill="#E5546B"/>
+  <polygon points="1012,262 1026,214 1046,252" fill="#1F6A75"/>
+  <polygon points="1084,252 1104,214 1118,262" fill="#1F6A75"/>
+  <ellipse cx="1065" cy="335" rx="96" ry="88" fill="#2C8C99"/>
+  <ellipse cx="1012" cy="420" rx="26" ry="12" fill="#1F6A75"/>
+  <ellipse cx="1118" cy="420" rx="26" ry="12" fill="#1F6A75"/>
+  <circle cx="1035" cy="312" r="15" fill="#F5F2FF"/>
+  <circle cx="1095" cy="312" r="15" fill="#F5F2FF"/>
+  <circle cx="1031" cy="315" r="6.5" fill="#1B2147"/>
+  <circle cx="1091" cy="315" r="6.5" fill="#1B2147"/>
+  <path d="M1028 358 Q1065 392 1102 358 Z" fill="#1B2147"/>
+  <polygon points="1040,360 1048,360 1044,370" fill="#F5F2FF"/>
+  <polygon points="1082,360 1090,360 1086,370" fill="#F5F2FF"/>
+</svg>
