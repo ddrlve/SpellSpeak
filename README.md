@@ -1,4 +1,4 @@
-# SpellSpeak starter kit
+# SpellSpeak
 
 ## Flow in plain words (one round of the game)
 1. The game shows a word, for example "think". The game chose it, not the AI.
