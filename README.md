@@ -175,7 +175,7 @@ The delay of Jalur B is reported as "endpoint to score".
 - Every WER, PER, latency, or RTF number comes from a rerunnable script or notebook that writes to `results/`. Mock output is never a result.
 - Real-time factor on the laptop comes from `backend/bench_rtf.py`. Kaggle CPU numbers are not laptop numbers.
 
-## Status
+## Status Project
 
 | Part                                      | State                                              |
 | ----------------------------------------- | -------------------------------------------------- |
