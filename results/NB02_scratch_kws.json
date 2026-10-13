@@ -1,0 +1,109 @@
+{
+  "notebook": "NB02_scratch_kws",
+  "date": "2026-10-13T03:47:39+00:00",
+  "device": {
+    "name": "Tesla T4",
+    "threads": 1,
+    "platform": "Linux-6.18.48+-x86_64-with-glibc2.39"
+  },
+  "data": {
+    "source": "Google Speech Commands v0.02 (official split)",
+    "n_utterances": 105829,
+    "speakers": 2618,
+    "n_train": 84843,
+    "n_val": 9981,
+    "n_test": 11005,
+    "labels": 35
+  },
+  "metrics": {
+    "best_val_acc": 0.8804728985071636,
+    "test_acc": 0.8680599727396638,
+    "train_seconds": 146.1,
+    "epochs": 15,
+    "params": 25795,
+    "cpu_latency_ms_median_1s_clip_1thread": 1.6531390001546242,
+    "cpu_latency_cpu": "Intel(R) Xeon(R) CPU @ 2.00GHz",
+    "history": [
+      {
+        "epoch": 1,
+        "val_acc": 0.4370303576795912,
+        "epoch_seconds": 10.100718021392822
+      },
+      {
+        "epoch": 2,
+        "val_acc": 0.669271616070534,
+        "epoch_seconds": 9.492259740829468
+      },
+      {
+        "epoch": 3,
+        "val_acc": 0.7214707945095682,
+        "epoch_seconds": 9.521864175796509
+      },
+      {
+        "epoch": 4,
+        "val_acc": 0.7816852018835788,
+        "epoch_seconds": 9.548545360565186
+      },
+      {
+        "epoch": 5,
+        "val_acc": 0.8042280332632,
+        "epoch_seconds": 9.58489990234375
+      },
+      {
+        "epoch": 6,
+        "val_acc": 0.8293758140466887,
+        "epoch_seconds": 9.595693111419678
+      },
+      {
+        "epoch": 7,
+        "val_acc": 0.8344855224927362,
+        "epoch_seconds": 9.63217830657959
+      },
+      {
+        "epoch": 8,
+        "val_acc": 0.8447049393848312,
+        "epoch_seconds": 9.68032431602478
+      },
+      {
+        "epoch": 9,
+        "val_acc": 0.841699228534215,
+        "epoch_seconds": 9.727821111679077
+      },
+      {
+        "epoch": 10,
+        "val_acc": 0.8541228333834285,
+        "epoch_seconds": 9.765053987503052
+      },
+      {
+        "epoch": 11,
+        "val_acc": 0.8527201683198077,
+        "epoch_seconds": 9.809787273406982
+      },
+      {
+        "epoch": 12,
+        "val_acc": 0.8577296864041679,
+        "epoch_seconds": 9.866103172302246
+      },
+      {
+        "epoch": 13,
+        "val_acc": 0.8606352068930969,
+        "epoch_seconds": 9.904480218887329
+      },
+      {
+        "epoch": 14,
+        "val_acc": 0.8804728985071636,
+        "epoch_seconds": 9.94093370437622
+      },
+      {
+        "epoch": 15,
+        "val_acc": 0.8786694719967939,
+        "epoch_seconds": 9.905225038528442
+      }
+    ]
+  },
+  "notes": "SmallCNN, log-mel 40, AdamW lr=0.002, batch=128, seed=0. Best epoch by val acc. CPU latency measured on the Kaggle CPU, not the laptop.",
+  "versions": {
+    "torch": "2.11.0+cu128",
+    "torchaudio": "2.11.0+cu128"
+  }
+}

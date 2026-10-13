@@ -1,0 +1,23 @@
+word,target,tier,ipa,oov_tokens,usable
+think,th_voiceless,1,θ ɪ ŋ k,,True
+three,th_voiceless,1,θ ɹ iː,,True
+thank,th_voiceless,1,θ æ ŋ k,,True
+this,th_voiced,1,ð ɪ s,,True
+that,th_voiced,1,ð æ t,,True
+mother,th_voiced,2,m ʌ ð ɚ,,True
+weather,th_voiced,2,w ɛ ð ɚ,,True
+very,v_vs_f,1,v ɛ ɹ i,,True
+ferry,v_vs_f,1,f ɛ ɹ i,,True
+vine,v_vs_f,1,v aɪ n,,True
+fine,v_vs_f,1,f aɪ n,,True
+asked,final_cluster,2,æ s k t,,True
+helped,final_cluster,2,h ɛ l p t,,True
+texts,final_cluster,3,t ɛ k s t s,,True
+world,final_cluster,2,w ɜː l d,,True
+months,final_cluster,3,m ʌ n θ s,,True
+bad,ae_vs_eh,1,b æ d,,True
+bed,ae_vs_eh,1,b ɛ d,,True
+man,ae_vs_eh,1,m æ n,,True
+men,ae_vs_eh,1,m ɛ n,,True
+sat,ae_vs_eh,1,s æ t,,True
+set,ae_vs_eh,1,s ɛ t,,True

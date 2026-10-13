@@ -1,0 +1,25 @@
+{
+  "notebook": "NB00_setup",
+  "date": "2026-10-13T03:55:08+00:00",
+  "device": {
+    "name": "Tesla T4",
+    "threads": 2,
+    "platform": "Linux-6.18.48+-x86_64-with-glibc2.39"
+  },
+  "data": {
+    "source": "inventory",
+    "kaggle_inputs": [],
+    "own_clips": {
+      "attached": false
+    },
+    "n_utterances": 0,
+    "speakers": 0
+  },
+  "metrics": {},
+  "notes": "Inventory only. words.json validation: {\"usable\": [\"think\", \"three\", \"thank\", \"this\", \"that\", \"mother\", \"weather\", \"very\", \"ferry\", \"vine\", \"fine\", \"asked\", \"helped\", \"texts\", \"world\", \"months\", \"bad\", \"bed\", \"man\", \"men\", \"sat\", \"set\"], \"not_usable\": []}",
+  "versions": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.16.1",
+    "phonemizer": "3.4.0"
+  }
+}
