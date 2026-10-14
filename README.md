@@ -51,7 +51,7 @@ and counts the differences. That count, divided by the number of expected sounds
 
 The captioner never decides the end of your try or your score. This keeps the score honest: a lucky word guess cannot hide a wrong sound.
 
-### Data flow
+### Data flows
 
 ```mermaid
 flowchart LR
