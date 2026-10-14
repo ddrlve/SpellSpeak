@@ -3,5 +3,7 @@ websockets>=12
 torch
 transformers
 soundfile
+# Needed for mic capture (record_clips.py, live app):
+sounddevice
 # Needed for target phonemes (also: apt install espeak-ng / brew install espeak-ng):
 phonemizer
