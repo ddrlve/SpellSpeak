@@ -1,6 +1,6 @@
 # SpellSpeak Plan
 
-Status date: 2026-10-10. Progress presentation: Wednesday 2026-10-14. Final deadline: [TO FILL].
+Status date: 2026-10-13. Progress presentation: Wednesday 2026-10-14. Final deadline: [TO FILL].
 
 ## Goal
 A real-time, 100% local English pronunciation trainer for Indonesian learners, shown as a wizard game.
@@ -32,6 +32,17 @@ Two outputs must both work: a correct real-time transcript (Jalur A) and a phone
 | P7 Experiments | Notebooks NB01 to NB04: PER, WER, latency p50/p95, RTF, noise 20/10/5 dB | JSON results with machine info |
 | P8 User testing | 5+ real testers, SUS, interview | Data linked to P7 results |
 | P9 Report | Chapters 1 to 8, AI Usage Log | Every number traces to a results file |
+
+## Notebook status (2026-10-13)
+Numbers live only in `results/*.json`. Do not copy them here.
+- [x] NB00 setup: run on Kaggle. Output: `results/NB00_setup.json`, `results/NB00_words_validation.csv`.
+- [x] NB02 scratch KWS: run on Kaggle (T4). Output: `results/NB02_scratch_kws.json`. One seed, one run.
+- [ ] NB01 pretrained phoneme eval: needs `data/own` uploaded as private Kaggle Dataset `spellspeak-own-clips`.
+- [ ] NB03 streaming ASR eval: same dependency.
+- [ ] NB04 noise conditions: same dependency, plus NB01 and NB03 first.
+- [ ] NB05 fine-tune: not created (stretch).
+- [ ] NB06 results report: run after the notebooks above.
+- [ ] `backend/bench_rtf.py` on the weakest laptop (P1 gate).
 
 ## Schedule to Wednesday
 - Sat 10 Oct: P0 finish (run Godot), P1 start (collect 10 to 20 clips, run bench_rtf.py), tell lecturer the scratch vs pretrained scope.
