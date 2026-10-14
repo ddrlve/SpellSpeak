@@ -19,9 +19,11 @@ kaggle/vosk-model-*/
 *.tar.bz2
 *.zip
 
-# --- Data (own recordings stay on team devices: consent, docs/DATASETS.md) ---
-data/
+# --- Data: only data/own (team recordings, speaker consent given) is tracked, see docs/DATASETS.md ---
+data/*
+!data/own/
 *.wav
+!data/own/**/*.wav
 *.flac
 *.mp3
 *.ogg
@@ -37,21 +39,16 @@ models/
 .cache/
 hotwords.txt
 
-# --- Results: JSON and per-clip CSV are evidence, keep them tracked. Figures are rebuilt by NB06. ---
-results/*.png
-
 # --- Godot ---
 .godot/
 .import/
 export/
 *.translation
 
-# --- AI agent files (Claude Code, Remember plugin, prompts). AI_USAGE_LOG.md stays tracked: graded deliverable. ---
+# --- AI agent files. CLAUDE.md, .claude/ commands, docs/CLAUDE_CODE_PROMPT.md and AI_USAGE_LOG.md stay tracked. ---
 .remember/
-.claude/
-CLAUDE.md
+.claude/settings.local.json
 CLAUDE.local.md
-docs/CLAUDE_CODE_PROMPT.md
 .cursor/
 .cursorrules
 .github/copilot-instructions.md
@@ -67,3 +64,7 @@ Thumbs.db
 desktop.ini
 ~$*
 *.log
+
+CLAUDE.md
+.claude/
+docs/CLAUDE_CODE_PROMPT.md
