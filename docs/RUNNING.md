@@ -12,7 +12,21 @@ python server.py                   # mock backend di ws://127.0.0.1:8765
 ```
 
 Lalu buka folder `godot/` di Godot 4.x, tekan Run, tekan Cast.
-Semua angka dari mock server membawa `"mock": true` dan bukan hasil.
+
+Status backend sekarang (parsial):
+- NYATA: mic (sounddevice, 16 kHz mono) dan endpoint dari Silero VAD. Pesan `endpoint` tidak punya `"mock"`.
+- MOCK: `ready`, `partial`, `score`. Semuanya membawa `"mock": true` dan bukan hasil.
+
+Cara cek endpoint dengan mic asli: jalankan `python server.py`, tekan Cast, ucapkan satu kata, lalu diam.
+Setelah diam melebihi `hesitation_ms`, `endpoint` terkirim. Kalau tidak ada suara sama sekali sampai `timeout_s`,
+server kirim `{"type":"error","detail":"timeout: no speech"}`.
+
+Parameter VAD ada di satu file: `backend/vad_config.json`, per tier. Semua nilainya `UNCALIBRATED`
+(placeholder, bukan hasil kalibrasi) dan server mencetak peringatan di stderr. Kata yang tidak ada di
+`backend/words.json` memakai `default_tier` dan server mencetak peringatan sekali per kata.
+Weights Silero ikut paket pip `silero-vad`, tidak ada download dan tidak masuk git.
+
+Tes logika endpoint (audio sintetis, bukan klaim akurasi): `cd backend && python -m pytest -q`.
 
 Script yang memang harus jalan di laptop (bukan Kaggle):
 

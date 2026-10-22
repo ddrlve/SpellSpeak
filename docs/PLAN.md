@@ -44,6 +44,12 @@ Numbers live only in `results/*.json`. Do not copy them here.
 - [ ] NB06 results report: run after the notebooks above.
 - [ ] `backend/bench_rtf.py` on the weakest laptop (P1 gate).
 
+## Backend status (2026-10-23)
+- P5 VAD endpoint: implemented (Silero VAD, hesitation, timeout) and wired to the mic in `backend/server.py`. Parameters in `backend/vad_config.json` are UNCALIBRATED placeholders. Test for "endpoint never uses ASR text" is `backend/test_endpointer.py` (audio-only signatures, no ASR imports). Verified with a real mic by Dian: [TO FILL].
+- Utterance audio is kept in memory (`Session.utterance`) for Jalur B. Not processed yet.
+- Still mock: `ready`, `partial`, `score`.
+- Calibration of the VAD parameters needs own recordings (P2).
+
 ## Schedule to Wednesday
 - Sat 10 Oct: P0 finish (run Godot), P1 start (collect 10 to 20 clips, run bench_rtf.py), tell lecturer the scratch vs pretrained scope.
 - Sun 11 Oct: Kaggle NB02 (scratch KWS). Start P3.
