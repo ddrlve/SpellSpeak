@@ -5,5 +5,10 @@ transformers
 soundfile
 # Needed for mic capture (record_clips.py, live app):
 sounddevice
+numpy
+# Needed for the VAD endpoint (weights ship inside the package, no download):
+silero-vad
+# Needed to run the tests:
+pytest
 # Needed for target phonemes (also: apt install espeak-ng / brew install espeak-ng):
 phonemizer

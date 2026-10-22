@@ -1,7 +1,7 @@
 extends Control
 # SpellSpeak — wizard-themed pronunciation trainer
-# MOCK MODE active until backend/server.py uses real mic + models.
-# DO NOT use any values from mock runs in your report.
+# Backend: endpoint is real (mic + Silero VAD). partial and score are still MOCK
+# and carry "mock": true. DO NOT use any values from mock messages in your report.
 
 const URL := "ws://127.0.0.1:8765"
 const WORDS := ["think", "very", "three", "this", "father", "cloth", "breathe", "thirty"]
