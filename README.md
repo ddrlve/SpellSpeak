@@ -84,7 +84,7 @@ the sound judge is the one that makes the score.
 Everything runs on one laptop CPU. The Python backend listens to the microphone and does the analysis.
 The Godot game only draws the screen and talks to the backend over a local WebSocket.
 
-### Under the hood
+### Under the hoods
 
 The code and docs use two Indonesian words: **Jalur** means "track" or "lane". Jalur A is the captioner,
 Jalur B is the sound judge.
